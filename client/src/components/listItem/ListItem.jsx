@@ -22,7 +22,7 @@ const ListItem = ({ index, item }) => {
         const res = await axios.get("movies/find/" + item, {
           headers: {
             token:
-              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMWNjMjA2OGEzODQzZWVhZDI0YjkxMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0OTg2NTg2NiwiZXhwIjoxNjQ5OTUyMjY2fQ.f38Ph9dMjJLX0pyQqPglWEo0lS3ujgxd1LMZEtclfqk",
           },
         });
         setMovie(res.data);

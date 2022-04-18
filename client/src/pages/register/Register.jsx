@@ -1,19 +1,36 @@
+import axios from "axios";
 import { useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./register.scss";
 
 const Register = () => {
   const [email, setemail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setpassword] = useState("");
+  const navigate = useNavigate();
 
   const emailRef = useRef();
+  const usernameRef = useRef();
   const passwordRef = useRef();
 
   const handleStart = () => {
     setemail(emailRef.current.value);
   };
 
-  const handleFinish = () => {
+  const handleFinish = async (e) => {
+    e.preventDefault();
+    setUsername(usernameRef.current.value);
     setpassword(passwordRef.current.value);
+    try {
+      await axios.post("auth/register", {
+        username,
+        email,
+        password,
+      });
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="register">
@@ -33,7 +50,9 @@ const Register = () => {
               </g>
             </svg>
           </span>
-          <button className="loginButton">Sign In</button>
+          <Link to="/login">
+            <button className="loginButton">Sign In</button>
+          </Link>
         </div>
       </div>
       <div className="container">
@@ -51,6 +70,7 @@ const Register = () => {
           </div>
         ) : (
           <form className="input">
+            <input type="text" placeholder="Username" ref={usernameRef} />
             <input type="password" placeholder="Password" ref={passwordRef} />
             <button className="registerButton" onClick={handleFinish}>
               Start

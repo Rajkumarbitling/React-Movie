@@ -243,7 +243,7 @@ export default function Product() {
           <div className="productFormRight">
             <div className="productUpload">
               <img src={movie.img} alt="" className="productUploadImg" />
-              <label for="img">
+              <label htmlFor="img">
                 <Publish />
               </label>
               <input
@@ -259,7 +259,7 @@ export default function Product() {
             </div>
             <div className="productUpload">
               <img src={movie.imgThumb} alt="" className="productUploadImg" />
-              <label for="imgThumb">
+              <label htmlFor="imgThumb">
                 <Publish />
               </label>
               <input

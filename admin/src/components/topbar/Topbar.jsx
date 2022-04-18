@@ -35,7 +35,10 @@ export default function Topbar() {
             <Settings />
           </div>
           <img
-            src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            src={
+              JSON.parse(localStorage.getItem("user")).profilePic ||
+              "https://i.pinimg.com/474x/c3/53/7f/c3537f7ba5a6d09a4621a77046ca926d--soccer-quotes-lineman.jpg"
+            }
             alt=""
             className="topAvatar"
           />

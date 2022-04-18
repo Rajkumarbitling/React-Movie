@@ -28,8 +28,7 @@ export default function NewProduct() {
 
   const upload = (items) => {
     items.forEach((item) => {
-      const fileName =
-        new Date().getTime() + "_" + item.label + "_" + item.file.name;
+    const fileName = new Date().getTime() + "_" + item.label + "_" + item.file.name;
       const storageRef = ref(storage, `/items/${fileName}`);
       const uploadTask = uploadBytesResumable(storageRef, item.file);
       uploadTask.on(
@@ -91,7 +90,7 @@ export default function NewProduct() {
     e.preventDefault();
     upload([
       { file: img, label: "img" },
-      { file: imgTitle, label: "imgTile" },
+      // { file: imgTitle, label: "imgTile" },
       { file: imgThumb, label: "imgThumb" },
       { file: trailer, label: "trailer" },
       { file: video, label: "video" },
@@ -202,7 +201,7 @@ export default function NewProduct() {
             onChange={(e) => setVideo(e.target.files[0])}
           />
         </div>
-        {uploaded === 5 ? (
+        {uploaded === 4 ? (
           <button className="addProductButton" onClick={handleCreate}>
             Create
           </button>

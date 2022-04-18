@@ -21,17 +21,17 @@ export const createListFailure = () => ({
     type: 'CREATE_LIST_FAILURE'
 })
 
-// // Edit movies
-// export const editMovieStart = () => ({
-//     type: 'EDIT_MOVIE_START'
-// })
-// export const editMovieSuccess = (movie) => ({
-//     type: 'EDIT_MOVIE_SUCCESS',
-//     payload: movie,
-// })
-// export const editMovieFailure = () => ({
-//     type: 'EDIT_MOVIE_FAILURE'
-// })
+// Edit movies
+export const editListStart = () => ({
+    type: 'EDIT_LIST_START'
+})
+export const editListSuccess = (list) => ({
+    type: 'EDIT_LIST_SUCCESS',
+    payload: list,
+})
+export const editListFailure = () => ({
+    type: 'EDIT_LIST_FAILURE'
+})
 
 // Delete Movie Actions
 export const deleteListStart = () => ({

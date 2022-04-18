@@ -1,75 +1,75 @@
-const ListReducer = (state, action) => {
+const UserReducer = (state, action) => {
     switch (action.type) {
-        case "GET_LISTS_START":
+        case "GET_USERS_START":
             return {
-                lists: [],
+                users: [],
                 isFetching: true,
                 error: false,
             };
-        case "GET_LISTS_SUCCESS":
+        case "GET_USERS_SUCCESS":
             return {
-                lists: action.payload,
+                users: action.payload,
                 isFetching: false,
                 error: false,
             };
-        case "GET_LISTS_FAILURE":
+        case "GET_USERS_FAILURE":
             return {
-                lists: [],
+                users: [],
                 isFetching: false,
                 error: true,
             };
 
-        case "CREATE_LIST_START":
+        case "CREATE_USER_START":
             return {
                 ...state,
                 isFetching: true,
                 error: false,
             };
-        case "CREATE_LIST_SUCCESS":
+        case "CREATE_USER_SUCCESS":
             return {
-                lists: [...state.lists, action.payload],
+                users: [...state.users, action.payload],
                 isFetching: false,
                 error: false,
             };
-        case "CREATE_LIST_FAILURE":
-            return {
-                ...state,
-                isFetching: false,
-                error: true,
-            };
-
-        case "EDIT_LIST_START":
-            return {
-                ...state,
-                isFetching: true,
-                error: false,
-            };
-        case "EDIT_LIST_SUCCESS":
-            return {
-                lists: state.lists.map((list) => list._id === action.payload._id && action.payload),
-                isFetching: false,
-                error: false,
-            };
-        case "EDIT_LIST_FAILURE":
+        case "CREATE_USER_FAILURE":
             return {
                 ...state,
                 isFetching: false,
                 error: true,
             };
 
-        case "DELETE_LIST_START":
+        case "EDIT_USER_START":
             return {
                 ...state,
                 isFetching: true,
                 error: false,
             };
-        case "DELETE_LIST_SUCCESS":
+        case "EDIT_USER_SUCCESS":
             return {
-                lists: state.lists.filter((list) => list._id !== action.payload),
+                users: state.users.map((user) => user._id === action.payload._id && action.payload),
                 isFetching: false,
                 error: false,
             };
-        case "DELETE_LIST_FAILURE":
+        case "EDIT_USER_FAILURE":
+            return {
+                ...state,
+                isFetching: false,
+                error: true,
+            };
+
+        case "DELETE_USER_START":
+            return {
+                ...state,
+                isFetching: true,
+                error: false,
+            };
+        case "DELETE_USER_SUCCESS":
+            return {
+                users: state.users.filter((user) => user._id !== action.payload),
+                isFetching: false,
+                error: false,
+            };
+        case "DELETE_USER_FAILURE":
             return {
                 ...state,
                 isFetching: false,
@@ -81,4 +81,4 @@ const ListReducer = (state, action) => {
     }
 };
 
-export default ListReducer;
+export default UserReducer;

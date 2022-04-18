@@ -10,6 +10,8 @@
     position: relative;
 
   .top {
+    position: relative;
+    z-index: 1;
     .wrapper {
       padding: 20px 50px;
       display: flex;

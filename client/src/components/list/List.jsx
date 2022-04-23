@@ -5,6 +5,7 @@ import "./list.scss";
 
 const List = ({ list }) => {
   const [slideNumber, setSlideNumber] = useState(0);
+  const [clickLimit, setClickLimit] = useState(window.innerWidth / 230);
   const listRef = useRef();
 
   const handleClick = (direction) => {
@@ -13,7 +14,7 @@ const List = ({ list }) => {
       setSlideNumber(slideNumber - 1);
       listRef.current.style.transform = `translateX(${230 + distance}px)`;
     }
-    if (direction === "right" && slideNumber < 5) {
+    if (direction === "right" && slideNumber < 10 - clickLimit) {
       setSlideNumber(slideNumber + 1);
       listRef.current.style.transform = `translateX(${-230 + distance}px)`;
     }
@@ -28,7 +29,7 @@ const List = ({ list }) => {
         />
         <div className="container" ref={listRef}>
           {list.content.map((item, index) => (
-            <ListItem index={index} item={item} />
+            <ListItem key={index} item={item} />
           ))}
         </div>
         <ArrowForwardIos

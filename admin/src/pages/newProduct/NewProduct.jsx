@@ -4,6 +4,7 @@ import storage from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { createMovie } from "../../context/movieContext/apiCalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
+import { useHistory } from "react-router";
 
 export default function NewProduct() {
   const [movie, setMovie] = useState({});
@@ -13,6 +14,8 @@ export default function NewProduct() {
   const [trailer, setTrailer] = useState(null);
   const [video, setVideo] = useState(null);
   const [uploaded, setUploaded] = useState(0);
+  const [uploadedNumber, setUploadedNumber] = useState(0);
+  const history = useHistory();
 
   const { dispatch } = useContext(MovieContext);
 
@@ -100,6 +103,7 @@ export default function NewProduct() {
   const handleCreate = (e) => {
     e.preventDefault();
     createMovie(movie, dispatch);
+    history.go(0);
   };
   console.log(movie);
 
@@ -113,7 +117,10 @@ export default function NewProduct() {
             type="file"
             id="img"
             name="img"
-            onChange={(e) => setImg(e.target.files[0])}
+            onChange={(e) => {
+              setImg(e.target.files[0]);
+              setUploadedNumber((prev) => prev + 1);
+            }}
           />
         </div>
         <div className="addProductItem">
@@ -122,7 +129,10 @@ export default function NewProduct() {
             type="file"
             id="imgThumb"
             name="imgThumb"
-            onChange={(e) => setImgThumb(e.target.files[0])}
+            onChange={(e) => {
+              setImgThumb(e.target.files[0]);
+              setUploadedNumber((prev) => prev + 1);
+            }}
           />
         </div>
         <div className="addProductItem">
@@ -185,12 +195,31 @@ export default function NewProduct() {
             <option value="true">Yes</option>
           </select>
         </div>
+        {/* <div className="addProductItem">
+          <label>Trailer</label>
+          <input
+            type="text"
+            placeholder="Trailer"
+            name="trailer"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="addProductItem">
+          <label>Video</label>
+          <input
+            type="text"
+            placeholder="Video"
+            name="video"
+            onChange={handleChange}
+          />
+        </div> */}
         <div className="addProductItem">
           <label>Trailer</label>
           <input
             type="file"
             name="trailer"
-            onChange={(e) => setTrailer(e.target.files[0])}
+            onChange={(e) => {setTrailer(e.target.files[0]); 
+              setUploadedNumber((prev) => prev + 1);}}
           />
         </div>
         <div className="addProductItem">
@@ -198,7 +227,8 @@ export default function NewProduct() {
           <input
             type="file"
             name="video"
-            onChange={(e) => setVideo(e.target.files[0])}
+            onChange={(e) => {setVideo(e.target.files[0]); 
+              setUploadedNumber((prev) => prev + 1);}}
           />
         </div>
         {uploaded === 4 ? (

@@ -22,7 +22,7 @@ const Navbar = () => {
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
         <div className="left">
-          <span className="nfLogo">
+          <div className="nfLogo">
             <svg
               viewBox="0 0 111 30"
               className="svg-icon svg-icon-netflix-logo"
@@ -35,15 +35,15 @@ const Navbar = () => {
                 ></path>
               </g>
             </svg>
-          </span>
+          </div>
           <Link to="/">
             <span>Homepage</span>
           </Link>
           <Link to="/series">
-            <span>Series</span>
+            <span className="links">Series</span>
           </Link>
           <Link to="/movies">
-            <span>Movies</span>
+            <span className="links">Movies</span>
           </Link>
           <Link to="/">
             <span>New and Popular</span>
@@ -54,7 +54,7 @@ const Navbar = () => {
         </div>
         <div className="right">
           <Search className="icon" />
-          <span>Kid</span>
+          <span className="kid">Kid</span>
           <Notifications className="icon" />
           <img
             src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-user-vector-avatar-png-image_4830521.jpg"

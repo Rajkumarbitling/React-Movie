@@ -1,3 +1,5 @@
+@import "../../App.scss";
+
 .featured {
   height: 90vh;
   position: relative;
@@ -33,9 +35,19 @@
     width: 35%;
     position: absolute;
     left: 50px;
-    top: 100px;
+    bottom: 50px;
     display: flex;
     flex-direction: column;
+
+    @include tablet {
+      width: 100%;
+    }
+
+    .movietitle {
+      font-size: 4rem;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
     img {
       width: 400px;

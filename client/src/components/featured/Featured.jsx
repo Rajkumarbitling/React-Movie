@@ -3,6 +3,7 @@ import "./featured.scss";
 import naruto from "../../images/naruto.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState({});
@@ -35,23 +36,23 @@ const Featured = ({ type, setGenre }) => {
             onChange={(e) => setGenre(e.target.value)}
           >
             <option>Genre</option>
-            <option value="adventure">Adventure</option>
             <option value="comedy">Comedy</option>
             <option value="action">Action</option>
-            <option value="crime">Crime</option>
-            <option value="thriller">Thriller</option>
           </select>
         </div>
       )}
       <img width="100%" src={content.img} alt="" />
       <div className="info">
-        <img src={naruto} alt="" />
+        {/* <img src={naruto} alt="" /> */}
+        <h2 className="movietitle">{content.title}</h2>
         <div className="desc">{content.desc}</div>
         <div className="buttons">
-          <button className="play">
-            <PlayArrow />
-            <span>Play</span>
-          </button>
+          <Link to="/watch" state={content}>
+            <button className="play">
+              <PlayArrow />
+              <span>Play</span>
+            </button>
+          </Link>
           <button className="more">
             <InfoOutlined />
             <span>Info</span>

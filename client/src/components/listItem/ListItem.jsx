@@ -51,11 +51,14 @@ const ListItem = ({ index, item }) => {
             <video src={movie.trailer} autoPlay={true} loop={true}></video>
             <div className="itemInfo">
               <div className="icons">
-                <PlayArrow className="icon" />
+                <Link to="/watch" state={movie}>
+                  <PlayArrow className="icon" />
+                </Link>
                 <Add className="icon" />
                 <ThumbUpOutlined className="icon" />
                 <ThumbDownOutlined className="icon" />
               </div>
+              <p>{movie.title}</p>
               <div className="itemInfoTop">
                 <span>{movie.duration}</span>
                 <span className="limit">+{movie.limit} age</span>

@@ -13,7 +13,7 @@ const Home = ({ type }) => {
     const getRandomList = async () => {
       try {
         const res = await axios.get(
-          `/lists${type ? "?type" + type : ""}${genre ? "&genre" + genre : ""}`,
+          `/lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`,
           {
             headers: {
               token:
@@ -33,8 +33,8 @@ const Home = ({ type }) => {
     <div className="home">
       <Navbar />
       <Featured type={type} setGenre={setGenre} />
-      {lists.map((list) => (
-        <List list={list} />
+      {lists.map((list, index) => (
+        <List key={index} list={list} />
       ))}
     </div>
   );

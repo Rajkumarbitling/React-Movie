@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import "./product.css";
 import storage from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -18,6 +18,7 @@ export default function Product() {
   const [trailer, setTrailer] = useState(null);
   const [video, setVideo] = useState(null);
   const [updatedMovie, setUpdatedMovie] = useState(movie);
+  const history = useHistory();
 
   const { dispatch } = useContext(MovieContext);
 
@@ -110,6 +111,7 @@ export default function Product() {
   const handleCreate = (e) => {
     e.preventDefault();
     editMovie(updatedMovie, dispatch);
+    history.push("/movies");
   };
 
   console.log(updatedMovie);

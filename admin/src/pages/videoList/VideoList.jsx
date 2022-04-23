@@ -86,12 +86,16 @@ export default function VideoList() {
             </div>
             <div className="addProductItem">
               <label>Type</label>
-              <input
-                type="text"
-                placeholder={list.type}
+              <select
                 name="type"
+                id="type"
+                value={updatedList.type}
                 onChange={handleUpdate}
-              />
+              >
+                <option>Select</option>
+                <option value="movies">Movies</option>
+                <option value="series">Series</option>
+              </select>
             </div>
             <div className="addProductItem">
               <label>Genre</label>
@@ -114,16 +118,17 @@ export default function VideoList() {
                 id="content"
                 onChange={handleSelect}
               >
-                {movies.map((movie) => (
-                  list.content.includes(movie._id) ?
-                      (<option key={movie._id} value={movie._id} selected>
-                        {movie.title}
-                      </option>)
-                      :
-                      (<option key={movie._id} value={movie._id}>
-                        {movie.title}
-                      </option>)
-                  ))}
+                {movies.map((movie) =>
+                  list.content.includes(movie._id) ? (
+                    <option key={movie._id} value={movie._id} selected>
+                      {movie.title}
+                    </option>
+                  ) : (
+                    <option key={movie._id} value={movie._id}>
+                      {movie.title}
+                    </option>
+                  )
+                )}
               </select>
             </div>
           </div>

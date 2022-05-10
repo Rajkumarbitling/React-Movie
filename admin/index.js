@@ -29,15 +29,10 @@ app.use("/api/movies", movieRoute)
 app.use("/api/lists", listRoute)
 
 if (process.env.NODE_ENV === "production") {
-app.use(express.static(path.join(__dirname, "/client/build")));
 app.use(express.static(path.join(__dirname, "/admin/build")));
 
-app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, '/admin/build', 'index.html'));
-});
-
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '/admin/build', 'index.html'));
 });
 }
 app.listen(process.env.PORT || 8800, () => {

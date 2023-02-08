@@ -45,5 +45,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8800/api/"
+  "proxy": "https://react-movie-app-23vhrdtuz-rajkumarbitling.vercel.app/api/"
 }

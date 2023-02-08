@@ -40,7 +40,7 @@ const corsOptions = {
   },
   credentials: true,
 }
-app.use(cors(corsOptions))
+app.use(cors())
 app.use("/api/auth", authRoute)
 app.use("/api/users", userRoute)
 app.use("/api/movies", movieRoute)

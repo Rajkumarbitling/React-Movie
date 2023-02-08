@@ -22,7 +22,7 @@ async function main() {
 main().then(console.log("Db connected"))
 
 app.use(express.json());
-
+app.use(cors())
 app.use("/api/auth", authRoute)
 app.use("/api/users", userRoute)
 app.use("/api/movies", movieRoute)

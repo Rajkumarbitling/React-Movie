@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-    baseURL: "https://rajbits-movie-app.herokuapp.com/api/"
+    baseURL: "https://react-movie-app-23vhrdtuz-rajkumarbitling.vercel.app/api/"
 })

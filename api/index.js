@@ -7,7 +7,7 @@ const userRoute = require("./routes/users");
 const movieRoute = require("./routes/movies");
 const listRoute = require("./routes/lists");
 const path = require('path')
-const cors = require("cors")
+const cors = require('cors');
 
 dotenv.config();
 
@@ -22,25 +22,25 @@ async function main() {
 
 main().then(console.log("Db connected"))
 
+// if (process.env.NODE_ENV !== "production") {
+//     require("dotenv").config()
+// }
+// const domainsFromEnv = process.env.CORS_DOMAINS || ""
+
+// const whitelist = domainsFromEnv.split(",").map(item => item.trim())
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (!origin || whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error("Not allowed by CORS"))
+//     }
+//   },
+//   credentials: true,
+// }
+app.use(cors());
+
 app.use(express.json());
-
-if (process.env.NODE_ENV !== "production") {
-    require("dotenv").config()
-}
-const domainsFromEnv = process.env.CORS_DOMAINS || ""
-
-const whitelist = domainsFromEnv.split(",").map(item => item.trim())
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error("Not allowed by CORS"))
-    }
-  },
-  credentials: true,
-}
-app.use(cors())
 app.use("/api/auth", authRoute)
 app.use("/api/users", userRoute)
 app.use("/api/movies", movieRoute)

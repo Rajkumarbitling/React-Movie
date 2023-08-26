@@ -17,25 +17,21 @@ const ListItem = ({ index, item }) => {
   const [movie, setMovie] = useState({});
   const videoLink = spiderTrailer;
 
-  // useEffect(() => {
-  //   const getMovie = async () => {
-  //     try {
-  //       const res = await axiosInstance.get("movies/find/" + item, {
-  //         headers: {
-  //           token:
-  //             "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-  //         },
-  //       });
-  //       setMovie(res.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getMovie();
-  // }, [item]);
-  
   useEffect(() => {
-    setMovie(item);
+    const getMovie = async () => {
+      try {
+        const res = await axiosInstance.get("movies/find/" + item, {
+          headers: {
+            token:
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+          },
+        });
+        setMovie(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getMovie();
   }, [item]);
 
   return (

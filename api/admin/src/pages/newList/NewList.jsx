@@ -66,7 +66,7 @@ export default function NewList() {
             <label>Type</label>
             <select name="type" id="type" onChange={handleChange}>
               <option>Type</option>
-              <option value="movies">Movies</option>
+              <option value="movie">Movie</option>
               <option value="series">Series</option>
             </select>
           </div>

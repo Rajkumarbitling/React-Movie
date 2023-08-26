@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-    baseURL: "https://react-movie-app-api.vercel.app/api/"
-    // baseURL: "http://localhost:8800/api/"
+    baseURL: "https://rajbits-movie-app.herokuapp.com/api/",
+    // proxy: "http://localhost:8800/api/",
 })

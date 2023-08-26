@@ -41,6 +41,8 @@ export default function VideoList() {
     history.push("/lists");
   };
 
+  console.log(updatedList);
+
   return (
     <div className="product">
       <div className="productTitleContainer">
@@ -117,7 +119,7 @@ export default function VideoList() {
                 onChange={handleSelect}
               >
                 {movies.map((movie) =>
-                  list.content.find(li => movie._id === li._id) ? (
+                  list.content.includes(movie._id) ? (
                     <option key={movie._id} value={movie._id} selected>
                       {movie.title}
                     </option>

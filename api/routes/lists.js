@@ -60,20 +60,22 @@ router.get("/", verify, async (req, res) => {
     const typeQuery = req.query.type;
     const genreQuery = req.query.genre;
     let list = [];
+
     try {
         if (typeQuery) {
             if (genreQuery) {
-                list = await List.find({
-                    type: typeQuery, genre: genreQuery
-                }).populate("content").limit(10).lean()
+                list = await List.aggregate([
+                    { $sample: { size: 10 } },
+                    { $match: { type: typeQuery, genre: genreQuery } },
+                ])
             } else {
-                list = await List.find({
-                    type: typeQuery
-                }).populate("content").limit(10).lean()
+                list = await List.aggregate([
+                    { $sample: { size: 10 } },
+                    { $match: { type: typeQuery } },
+                ])
             }
         } else {
-            list = await List.find().populate("content").limit(10).lean()
-            // list = await List.aggregate([{ $sample: { size: 10 } }]);
+            list = await List.aggregate([{ $sample: { size: 10 } }]);
         }
         res.status(200).json(list);
     } catch (error) {

@@ -24,7 +24,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/admin">
           <ReactNotifications />
           {user && user.isAdmin ? <Redirect to={"/home"} /> : <Login />}
         </Route>
@@ -66,7 +66,7 @@ function App() {
               </Route>
             </div>
           </> : <>
-            <Redirect to={"/"} />
+            <Redirect to={"/admin"} />
           </>
         }
       </Switch>

@@ -2,11 +2,10 @@ import { useContext, useRef, useState } from "react";
 import { login } from "../../authContext/apiCalls";
 import { AuthContext } from "../../authContext/AuthContext";
 import "./login.scss";
-import {Link} from "react-router-dom";
 
 const Login = () => {
-  const [email, setEmail] = useState("user@gmail.com");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { dispatch } = useContext(AuthContext);
 
   const handleLogin = (e) => {
@@ -38,24 +37,19 @@ const Login = () => {
           <h1>Sign In</h1>
           <input
             type="email"
-            placeholder="Email"
-            value="user@gmail.com"
+            placeholder="Email or phone number"
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
             placeholder="Password"
-            value="123456"
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className="loginButton" onClick={handleLogin}>
             Sign In
           </button>
           <span>
-            New to Netflix?{" "}
-            <Link to="/">
-              <b>Sign up now.</b>
-            </Link>
+            New to Netflix? <b>Sign up now.</b>
           </span>
           <small>
             This page is protected by me to ensure you are not bot.

@@ -73,7 +73,7 @@ export default function ProductList() {
         rows={movies}
         disableSelectionOnClick
         columns={columns}
-        pageSize={10}
+        pageSize={8}
         checkboxSelection
         getRowId={(r) => r._id}
       />

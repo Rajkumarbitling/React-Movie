@@ -28,6 +28,9 @@ const Featured = ({ type, setGenre }) => {
       }
     };
     getFeaturedContent();
+    return () => {
+      setGenre(null)
+    }
   }, [type]);
 
   return (

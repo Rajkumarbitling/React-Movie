@@ -78,7 +78,7 @@ export default function UserList() {
         rows={users}
         disableSelectionOnClick
         columns={columns}
-        pageSize={10}
+        pageSize={8}
         checkboxSelection
         getRowId={(r) => r._id}
       />

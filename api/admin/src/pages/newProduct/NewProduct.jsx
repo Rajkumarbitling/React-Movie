@@ -100,10 +100,12 @@ export default function NewProduct() {
     ]);
   };
 
-  const handleCreate = (e) => {
+  const handleCreate = async (e) => {
     e.preventDefault();
-    createMovie(movie, dispatch);
-    history.go(0);
+    await createMovie(movie, dispatch);
+    setTimeout(() => {
+      history.go(0);
+    }, 3000);
   };
   console.log(movie);
 
